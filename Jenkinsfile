@@ -10,7 +10,7 @@ pipeline {
             steps {
                 //container('docker')
                 sh '''
-                   echo "Hello, father!" > /opt/file.txt
+                   sudo echo "Hello, father!" > /opt/file.txt
                 '''
             }
         }
