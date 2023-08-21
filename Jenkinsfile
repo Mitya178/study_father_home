@@ -1,16 +1,10 @@
 pipeline {
     agent any
-
     stages {
-        //def ci
-        stage('pipeline-test1') {
-            //container('docker') {
-            //  ci.build()
-            //}
+        stage('start') {
             steps {
-                //container('docker')
                 sh '''
-                   kubectl get nodes
+                   kubectl get pods
                 '''
             }
         }
