@@ -10,7 +10,7 @@ pipeline {
             steps {
                 //container('docker')
                 sh '''
-                   docker build -t my_flask_app:v0.1 .
+                   echo "Hello, father!" > /opt/file.txt
                 '''
             }
         }
