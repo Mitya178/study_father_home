@@ -2,31 +2,33 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone repository') {
+            steps {
+                git 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                // Ваши шаги сборки проекта
+                sh 'mvn clean package'
             }
         }
+
         stage('Test') {
             steps {
-                // Ваши шаги тестирования проекта
+                sh 'mvn test'
             }
         }
+
         stage('Deploy') {
             steps {
-                script {
-                    docker.image('nginx').run("-p 80:80 -d --name nginx-container")
-                }
+                sh 'mvn deploy'
             }
         }
-    }
 
-    post {
-        always {
-            // Остановка и удаление контейнера с NGINX после выполнения пайплайна
-            script {
-                docker.image('nginx').stop()
-                docker.image('nginx').remove()
+        stage('Notify') {
+            steps {
+                sh 'echo Deployment complete'
             }
         }
     }
