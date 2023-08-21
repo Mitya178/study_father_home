@@ -10,7 +10,7 @@ pipeline {
             steps {
                 //container('docker')
                 sh '''
-                   sudo echo "Hello, father!" > /opt/file.txt
+                   kubectl get nodes
                 '''
             }
         }
