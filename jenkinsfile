@@ -2,33 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone repository') {
+        //def ci
+        stage('pipeline-test1') {
+            //container('docker') {
+            //  ci.build()
+            //}
             steps {
-                git 'https://github.com/Mitya178/study_father_home.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }
-
-        stage('Notify') {
-            steps {
-                sh 'echo Deployment complete'
+                //container('docker')
+                sh '''
+                   docker build -t my_flask_app:v0.1 .
+                '''
             }
         }
     }
