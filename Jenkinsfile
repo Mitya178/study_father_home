@@ -4,7 +4,7 @@ pipeline {
         stage('start') {
             steps {
                 sh '''
-                   kubectl get pods
+                   echo "Hello, father!"
                 '''
             }
         }
