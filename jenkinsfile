@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Ваши шаги сборки проекта
+            }
+        }
+        stage('Test') {
+            steps {
+                // Ваши шаги тестирования проекта
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.image('nginx').run("-p 80:80 -d --name nginx-container")
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Остановка и удаление контейнера с NGINX после выполнения пайплайна
+            script {
+                docker.image('nginx').stop()
+                docker.image('nginx').remove()
+            }
+        }
+    }
+}
