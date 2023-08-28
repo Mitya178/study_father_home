@@ -2,11 +2,20 @@ pipeline {
     agent any
     
     stages {
-        stage('build image') {
+        stage('Build image') {
             steps {
                 script {
                     sh '''
                         docker build -t mitya178/k8sapp:v1 .
+                    '''
+                }
+            }
+        }
+        stage('Login in DockerHub') {
+            steps {
+                script {
+                    sh '''
+                        docker login -u mitya178
                     '''
                 }
             }
