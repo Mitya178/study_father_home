@@ -2,11 +2,20 @@ pipeline {
     agent any
     
     stages {
-        stage('build images') {
+        stage('build image') {
             steps {
                 script {
                     sh '''
-                        docker build -t jengitapp:v1 .
+                        docker build -t mitya178/k8sapp:v1 .
+                    '''
+                }
+            }
+        }
+        stage('Push in Artifactory') {
+            steps {
+                script {
+                    sh '''
+                        docker push mitya178/k8sapp:v1
                     '''
                 }
             }
