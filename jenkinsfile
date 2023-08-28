@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Push in Artifactory') {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub-cred-mitya178', url: https://index.docker.io/v1/ {
+                withDockerRegistry(credentialsId: 'dockerhub-cred-mitya178', url: 'https://index.docker.io/v1/') {
                     sh '''
                         docker push mitya178/k8sapp:v1
                     '''
