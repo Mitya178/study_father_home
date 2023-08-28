@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('build images') {
+            steps {
+                script {
+                    sh '''
+                        docker build -t jengitapp:v1 .
+                    '''
+                }
+            }
+        }
+    }
+}
