@@ -1,16 +1,16 @@
 pipeline {
     agent {
-		node('master') {
-			kubernetes {
-				cloud 'kubernetes'
-				// Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
-				// Or, to avoid YAML:
-				// containerTemplate {
-				//     name 'shell'
-				//     image 'ubuntu'
-				//     command 'sleep'
-				//     args 'infinity'
-				// }
+	node ('master') {
+        	kubernetes {
+            	cloud 'kubernetes'
+            	// Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
+            	// Or, to avoid YAML:
+            	// containerTemplate {
+            	//     name 'shell'
+            	//     image 'ubuntu'
+            	//     command 'sleep'
+            	//     args 'infinity'
+            	// }
             yaml '''
 apiVersion: v1
 kind: Pod
@@ -29,13 +29,14 @@ spec:
             // }
             defaultContainer 'shell'
         }
+	}
     }
     stages {
         stage('Build image') {
             steps {
                 script {
                     sh '''
-                        docker build -t mitya178/k8sapp:v2 .
+                        docker build -t mitya178/k8sapp:v1 .
                     '''
                 }
             }
@@ -44,11 +45,10 @@ spec:
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub-cred-mitya178', url: 'https://index.docker.io/v1/') {
                     sh '''
-                        docker push mitya178/k8sapp:v2
+                        docker push mitya178/k8sapp:v1
                     '''
                 }
             }
         }
     }
-}
 }
