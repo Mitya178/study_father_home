@@ -35,7 +35,6 @@ spec:
                 script {
                     sh '''
                         pwd
-                        service docker status
                         hostname
                     '''
                 }
