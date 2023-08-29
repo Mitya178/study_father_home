@@ -24,7 +24,7 @@ pipeline {
             steps { 
                 sh '''
                         sudo -S chmod 777 /root/.kube/config
-                        kubectl --kubeconfig /root/.kube/config apply -f deployment.yaml
+                        sudo kubectl --kubeconfig /root/.kube/config apply -f deployment.yaml
                     '''
             }
         }
