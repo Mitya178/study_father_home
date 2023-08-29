@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Do deployment') {
             steps { 
-                withKubeConfig(credentialsId: 'root4k8s') {
+                withKubeConfig(credentialsId: 'secretTextK8s') {
                   sh 'kubectl apply -f deployment.yaml'
                 }
             }
