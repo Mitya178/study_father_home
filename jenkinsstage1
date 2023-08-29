@@ -34,7 +34,7 @@ spec:
             steps {
                 script {
                     sh '''
-                        apt install docker.io -y
+                        ping 8.8.8.8
                     '''
                 }
             }
