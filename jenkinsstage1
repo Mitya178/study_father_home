@@ -30,12 +30,11 @@ spec:
         }
     }
     stages {
-        stage('Check docker') {
+        stage('Install docker') {
             steps {
                 script {
                     sh '''
-                        pwd
-                        hostname
+                        apt install docker.io -y
                     '''
                 }
             }
