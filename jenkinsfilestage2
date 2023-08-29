@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Do deployment') {
             steps { 
-                scirpt {
+                script {
                     kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "secretTextK8s")
                     }
             }
