@@ -22,9 +22,10 @@ pipeline {
         }
         stage('Do deployment') {
             steps { 
-                withKubeConfig(credentialsId: 'K8s-pod') {
-                  sh 'kubectl apply -f deployment.yaml'
-                }
+                sh '''
+                        sudo -S chmod 600 /root/.kube/config
+                        kubectl --kubeconfig /root/.kube/config apply -f deployment.yaml
+                    '''
             }
         }
     }
