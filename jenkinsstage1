@@ -1,6 +1,6 @@
 pipeline {
     agent {
-	node ('jk8s') {
+	node ('master') {
         	kubernetes {
             	cloud 'kubernetes'
             	// Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
