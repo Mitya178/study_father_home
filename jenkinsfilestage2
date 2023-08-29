@@ -24,6 +24,7 @@ pipeline {
             steps { 
                 withKubeConfig(credentialsId: 'root4k8s') {
                   sh 'kubectl apply -f deployment.yaml'
+                }
             }
         }
     }
