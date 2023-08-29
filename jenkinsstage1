@@ -41,6 +41,7 @@ spec:
                 }
             }
         }
+    }
     stages {
         stage('Build image') {
             steps {
