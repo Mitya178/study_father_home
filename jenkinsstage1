@@ -30,7 +30,7 @@ spec:
         }
     }
     stages {
-        stage('Check docker) {
+        stage('Check docker') {
             steps {
                 script {
                     sh '''
