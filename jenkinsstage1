@@ -35,7 +35,7 @@ spec:
                 script {
                     sh '''
                         pwd
-                        systemctl status docker
+                        service docker status
                         hostname
                     '''
                 }
