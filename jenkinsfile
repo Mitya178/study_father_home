@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker build -t mitya178/k8sapp:v1 .
+                        docker build -t mitya178/k8sapp:v2 .
                     '''
                 }
             }
