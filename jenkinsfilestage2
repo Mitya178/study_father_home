@@ -21,12 +21,10 @@ pipeline {
             }
         }
         stage('Do deployment') {
-            steps {
-	    	withKubeConfig([serverUrl: 'https://5.35.4.28']) {
-                sh """
-                kubectl apply -f deployment.yaml
-		"""
-		}
+            steps { 
+                    sh '''
+                        kubectl apply -f deployment.yaml
+                    '''
             }
         }
     }
