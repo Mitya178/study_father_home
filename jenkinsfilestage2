@@ -23,7 +23,7 @@ pipeline {
         stage('Do deployment') {
             steps { 
                 sh '''
-                        sudo -S chmod 600 /root/.kube/config
+                        sudo -S chmod 777 /root/.kube/config
                         kubectl --kubeconfig /root/.kube/config apply -f deployment.yaml
                     '''
             }
