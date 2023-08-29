@@ -30,6 +30,18 @@ spec:
         }
     }
     stages {
+        stage('Check docker) {
+            steps {
+                script {
+                    sh '''
+                        pwd
+                        systemctl status docker
+                        hostname
+                    '''
+                }
+            }
+        }
+    stages {
         stage('Build image') {
             steps {
                 script {
