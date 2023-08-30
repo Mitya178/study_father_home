@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myapptest5
+  name: myapptest5
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapptest5
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myapptest5
+    spec:
+      containers:
+      - image: mitya178/k8sapp:v5
+        name: k8sapp
+        resources: {}
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myapptest5
+  name: myapptest5
+spec:
+  ports:
+  - port: 9090
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app: myapptest5
+  type: NodePort
+status:
+  loadBalancer: {}
